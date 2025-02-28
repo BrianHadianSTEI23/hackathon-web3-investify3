@@ -10,7 +10,7 @@ export default function News() {
       <Navbar navItems={navItems} />
       <div className="h-[200vh] flex items-center justify-center text-2xl"></div>
 
-      <div className="w-full p-20 mt-10 ml-6 mr-6 flex flex-col gap-5">
+      <div className="w-full p-15 mt-10 ml-6 mr-6 flex flex-col gap-5">
         {stockNews.map((news, index) => (
           <Card
             key={index}
@@ -18,7 +18,7 @@ export default function News() {
           >
 
             {/* News */}
-            <div className="w-full h-[60px] sm:h-[100px] relative overflow-hidden rounded-xl">
+            <div className="w-full h-[60px] sm:h-[80px] relative overflow-hidden rounded-xl">
               <Image
                 //src={news.imageUrl}
                 src="/logo.png"
@@ -31,7 +31,7 @@ export default function News() {
 
             {/* Content */}
             <CardHeader className="p-2">
-              <CardTitle className="text-sm sm:text-base font-semibold">
+              <CardTitle className="text-xs sm:text-sm font-semibold">
                 <a href={news.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
                   {news.title}
                 </a>
@@ -42,7 +42,7 @@ export default function News() {
             </CardHeader>
 
             {/* Changes */}
-            <CardContent className="flex gap-2 flex-wrap p-2">
+            <CardContent className="flex gap-2 flex-wrap p-1">
               {news.stocks.map((stock, idx) => (
                 <span
                   key={idx}
