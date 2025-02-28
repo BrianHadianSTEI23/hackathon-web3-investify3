@@ -8,11 +8,11 @@ import { profileData } from "../../../data/data";
 
 export default function Profile() {
   return (
-    <div className="flex flex-col items-center p-10 pt-15 m-4 sm:p-20">
+    <div className="flex flex-col items-center pt-15 m-4 sm:p-20">
       <Navbar navItems={navItems} />
 
       {/* Profile Card */}
-      <div className="w-full p-10 place-content-center shadow-lg rounded-xl flex flex-col sm:flex-row items-center bg-white gap-10 sm:gap-x-20 overflow-hidden">
+      <div className="w-full p-10 place-content-center shadow-lg rounded-xl flex flex-col sm:flex-row items-center bg-white gap-10 sm:gap-x-30 overflow-hidden">
         
         {/* Profile Picture */}
         <div className="flex flex-col items-center">
@@ -73,7 +73,7 @@ export default function Profile() {
       </div>
 
       {/* Statistics Section */}
-      <div className="w-full mt-5">
+      <div className="w-full mt-0">
         <OrderSummary />
       </div>
 
