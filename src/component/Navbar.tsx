@@ -10,6 +10,7 @@ import { cn } from "../../lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./Button";
+import { useRouter } from "next/navigation";
 
 export const Navbar = ({
   navItems,
@@ -23,24 +24,24 @@ export const Navbar = ({
   const navContainerRef = useRef<HTMLDivElement>(null);
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY === 0) {
-        setIsNavVisible(true); // Navbar tetap terlihat saat awal
+        setIsNavVisible(true);
       } else if (currentScrollY > lastScrollY) {
-        setIsNavVisible(false); // Sembunyikan navbar saat scroll ke bawah
+        setIsNavVisible(false); 
       } else {
-        setIsNavVisible(true); // Tampilkan kembali saat scroll ke atas
+        setIsNavVisible(true); 
       }
 
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -98,7 +99,7 @@ export const Navbar = ({
           </div>
           
           {/* Tombol Login */}
-          <Button onClick={() => alert("Login")}>Login</Button>
+          <Button onClick={() => router.push("/login")}>Login</Button> 
 
           {/* Icon Settings */}
           <IoSettingsOutline size={22} />
