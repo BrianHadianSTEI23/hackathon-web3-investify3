@@ -18,8 +18,8 @@ const OrderStatistics = () => {
             <YAxis tickFormatter={(value) => `Rp${value / 1000}k`} />
             <Tooltip formatter={(value) => `${value.toLocaleString()}`} />
             <Legend />
-            <Line type="monotone" dataKey="2023" stroke="#2563eb" strokeWidth={2} dot={{ r: 3 }} />
-            <Line type="monotone" dataKey="2024" stroke="#ef4444" strokeWidth={2} dot={{ r: 3 }} />
+            <Line type="monotone" dataKey="2023" stroke="#8a6ab8" strokeWidth={2} dot={{ r: 3 }} />
+            <Line type="monotone" dataKey="2024" stroke="#d5b3ff" strokeWidth={2} dot={{ r: 3 }} />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>

@@ -30,7 +30,19 @@ export const data = [
 ];
 
 export const orderStats = {
-  totalOrders: "Rp23,235,050",
-  totalReturns: "Rp5,235,050",
-  totalRevenue: "Rp27,750,000",
+  totalOrders: {
+    saham: 1200000,
+    reksadana: 800000,
+    obligasi: 500000,
+  },
+  totalReturns: {
+    saham: 300000,
+    reksadana: 200000,
+    obligasi: 100000,
+  },
+  totalRevenue: {
+    saham: 1500000,
+    reksadana: 1000000,
+    obligasi: 7500000,
+  },
 };
