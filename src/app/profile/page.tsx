@@ -4,7 +4,7 @@ import { navItems } from "../../../data/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import OrderStatistics from "../../component/OrderStatistics";
 import OrderSummary from "@/component/OrderSummary";
-import { profileData } from "../../../data/data"; // Import dummy profile data
+import { profileData } from "../../../data/data"; 
 
 export default function Profile() {
   return (
@@ -18,7 +18,7 @@ export default function Profile() {
         <div className="flex flex-col items-center">
           <div className="w-30 h-30 sm:w-48 sm:h-48 bg-purple-400 rounded-full overflow-hidden flex items-center justify-center">
             <Image 
-              src={profileData.profilePicture} // Use dynamic data
+              src={profileData.profilePicture} 
               alt="Profile"
               width={192} 
               height={192} 
@@ -51,7 +51,7 @@ export default function Profile() {
               <p>Email</p>
             </div>
             <div className="space-y-2 text-gray-800">
-              <p>{profileData.username}</p> {/* Dynamic Data */}
+              <p>{profileData.username}</p> 
               <p>{profileData.fullName}</p>
               <p>{profileData.email}</p>
             </div>
@@ -65,7 +65,7 @@ export default function Profile() {
               <p>ID Wallet</p>
             </div>
             <div className="space-y-2 text-gray-800">
-              <p>{profileData.id}</p> {/* Dynamic Data */}
+              <p>{profileData.id}</p> 
               <p>{profileData.walletId}</p>
             </div>
           </div>
