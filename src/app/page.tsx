@@ -1,13 +1,16 @@
-import Image from "next/image";
-import { Navbar } from "../component/Navbar";
-import { navItems } from "../../data/data";
+import { Navbar } from "@/component/Navbar";
+import { Dashboard } from "./dashboard/Dashboard";
+import { navItems } from "@data";
+import { WhyChoose } from "./dashboard/WhyChoose";
+import { Credits} from "./dashboard/Credits";
 
 export default function Home() {
   return (
-    <div className="flex justify-center">
+    <div className="relative min-h-screen w-screen overflow-x-hidden flex flex-col items-center">
       <Navbar navItems={navItems} />
-      <div className="h-[200vh] flex items-center justify-center text-2xl">
-      </div>
+      <Dashboard />
+      <WhyChoose />
+      <Credits />
     </div>
   );
-}``
+}
