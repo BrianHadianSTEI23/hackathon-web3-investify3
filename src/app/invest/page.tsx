@@ -1,16 +1,14 @@
 import { Navbar } from "@/component/Navbar";
-import { Dashboard } from "./dashboard/Dashboard";
 import { navItems } from "@data";
-import { WhyChoose } from "./dashboard/WhyChoose";
-import { Credits} from "./dashboard/Credits";
+import { Portfolio } from "./Portfolio";
+import { Invest } from "./Invest";
 
-export default function Home() {
+export default function InvestPage() {
   return (
     <div className="relative min-h-screen w-screen overflow-x-hidden flex flex-col items-center">
       <Navbar navItems={navItems} />
-      <Dashboard />
-      <WhyChoose />
-      <Credits />
+      <Portfolio/>
+      <Invest/>
     </div>
   );
 }
