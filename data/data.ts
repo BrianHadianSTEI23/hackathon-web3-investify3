@@ -6,6 +6,48 @@ export const navItems = [
     { name: "Forum", link: "/forum" },
 ];
 
+export type Comment = {
+    id: number;
+    user: {
+      name: string;
+      avatar: string;
+    };
+    date: string;
+    content: string;
+    image?: string;
+    likes: number;
+    comments: number;
+  };
+  
+  export const comments: Comment[] = [
+    {
+      id: 1,
+      user: {
+        name: "Dindaa",
+        avatar: "/avatar1.jpg",
+      },
+      date: "2 days ago",
+      content:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
+      image: "/flower.jpg",
+      likes: 12,
+      comments: 12,
+    },
+    {
+      id: 2,
+      user: {
+        name: "Briann",
+        avatar: "/avatar2.jpg",
+      },
+      date: "2 days ago",
+      content:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
+      likes: 12,
+      comments: 12,
+    },
+  ];
+  
+
 
 export const orderStats = {
     totalOrders: "Rp23,235,050",
@@ -96,7 +138,7 @@ export const orderStats = {
       }
   ];
   
-=======
+
 export const profileData = {
     username: "Pacar Heleni",
     fullName: "Alastair Warren Tjajhrir",
@@ -220,5 +262,4 @@ export const stockList = [
   { name: "TIRA", fullName: "PT. Tiran Capital", price: "2,800", change: "+32 (1.8%)", isUp: true },
   { name: "ZONA", fullName: "PT. Zona Equity", price: "7,200", change: "-90 (2.7%)", isUp: false },
 ];
-
 
