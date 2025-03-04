@@ -1,16 +1,13 @@
 "use client";
 import { IoSettingsOutline } from "react-icons/io5";
 import React, { useState, useRef, useEffect } from "react";
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { cn } from "../../lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./Button";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export const Navbar = ({
   navItems,
@@ -25,6 +22,7 @@ export const Navbar = ({
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,9 +31,9 @@ export const Navbar = ({
       if (currentScrollY === 0) {
         setIsNavVisible(true);
       } else if (currentScrollY > lastScrollY) {
-        setIsNavVisible(false); 
+        setIsNavVisible(false);
       } else {
-        setIsNavVisible(true); 
+        setIsNavVisible(true);
       }
 
       setLastScrollY(currentScrollY);
@@ -66,7 +64,7 @@ export const Navbar = ({
         )}
       >
         {/* LOGO */}
-        <div className="flex items-center space-x-4">
+        <Link href="/" className="flex items-center space-x-4 cursor-pointer">
           <Image
             src="/logo.png"
             alt="Logo"
@@ -78,28 +76,29 @@ export const Navbar = ({
             inves
             <span className="font-semibold text-[#695192]">Tify3</span>
           </h1>
-        </div>
+        </Link>
 
         {/* NAVIGATION LINKS */}
         <div className="flex flex-row items-center gap-x-6">
           <div className="flex flex-row justify-between gap-x-10">
-            {navItems.map((navItem: any, idx: number) => (
+            {navItems.map((navItem, idx) => (
               <Link
                 key={`link=${idx}`}
                 href={navItem.link}
                 className={cn(
-                  "relative max-w-fit mx-auto items-center flex text-neutral-600 hover:text-neutral-500"
+                  "relative max-w-fit mx-auto items-center flex text-sm transition-colors",
+                  pathname === navItem.link
+                    ? "text-[#695192] font-semibold" 
+                    : "text-neutral-600 hover:text-neutral-500" 
                 )}
               >
-                <span className="hidden sm:block text-sm">
-                  {navItem.name}
-                </span>
+                {navItem.name}
               </Link>
             ))}
           </div>
-          
+
           {/* Tombol Login */}
-          <Button onClick={() => router.push("/login")}>Login</Button> 
+          <Button onClick={() => router.push("/login")}>Login</Button>
 
           {/* Icon Settings */}
           <IoSettingsOutline size={22} />
