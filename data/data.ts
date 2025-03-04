@@ -46,14 +46,6 @@ export type Comment = {
       comments: 12,
     },
   ];
-  
-
-
-export const orderStats = {
-    totalOrders: "Rp23,235,050",
-    totalReturns: "Rp5,235,050",
-    totalRevenue: "Rp27,750,000",
-  };
 
   export interface StockChange {
     name: string;
