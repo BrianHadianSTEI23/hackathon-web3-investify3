@@ -3,7 +3,7 @@
 import { Navbar } from "@/component/Navbar";
 import { navItems } from "../../../data/data";
 import Charts from "../../../component/chart"
-import {useState, useEffect } from "react";
+import { useState } from "react";
 import orderBookData from "../../../public/book-order.json";
 import keyStatisticsData from "../../../public/key-statistics.json"
 
@@ -13,7 +13,7 @@ export default function MarketDetail() {
 
   return (
     // main container
-    <div className="min-h-screen m-0 p-[1vw] box-border font-[family-name:var(--font-geist-sans)] bg-[#6E5597]">
+    <div className="min-h-screen m-0 p-[1vw] box-border font-[family-name:var(--font-geist-sans)] bg-white">
       {/* navbar */}
       <div className="flex justify-content items-center p-2 m-8">
         <Navbar navItems={navItems}/>
@@ -70,8 +70,8 @@ export default function MarketDetail() {
           </div>
 
           {/* data of each column */}
-          {bookOrder.map((item) => (
-            <div className="flex justify-around items-center space-y-4">
+          {bookOrder.map((item, index) => (
+            <div key={index} className="flex justify-around items-center space-y-4">
               <div className="h-full">{item.quantity_bid}</div>
               <div className="h-full">{item.bid}</div>
               <div className="h-full">{item.sell}</div>

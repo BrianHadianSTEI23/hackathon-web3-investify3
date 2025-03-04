@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
-export default function SalesChart() {
+export default function Charts() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("https://drive.google.com/file/d/1LMjDK2dUxh_WWbbc-mL_yLSbLSKX5_Pv/view?usp=sharing")
+    fetch("/data.json")
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .catch(error => console.error("Error loading data:", error));
