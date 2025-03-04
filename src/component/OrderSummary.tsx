@@ -19,7 +19,7 @@ const formatNumber = (num: number) => {
 
 export default function OrderSummary() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5 justify-items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-5 justify-items-center">
       <ChartCard title="Total Orders" data={orderStats.totalOrders} />
       <ChartCard title="Total Returns" data={orderStats.totalReturns} />
       <ChartCard title="Total Revenue" data={orderStats.totalRevenue} />
@@ -88,7 +88,7 @@ function ChartCard({ title, data }: { title: string; data: { saham: number; reks
         </div>
 
 
-        <div className="mt-4 flex gap-4 text-sm md:flex-row sm:flex-col-reverse">
+        <div className="mt-4 flex gap-4 text-sm md:flex-row">
           {chartData.map((entry, index) => (
             <div key={index} className="flex items-center">
               <span className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: COLORS[index] }}></span>

@@ -12,7 +12,7 @@ export default function Profile() {
       <Navbar navItems={navItems} />
 
       {/* Profile Card */}
-      <div className="w-full p-10 place-content-center shadow-lg rounded-xl flex flex-col sm:flex-row items-center bg-white gap-10 sm:gap-x-30 overflow-hidden">
+      <div className="w-full p-10 place-content-center shadow-lg rounded-xl flex flex-col md:flex-row items-center bg-white gap-10 sm:gap-x-30 overflow-hidden">
         
         {/* Profile Picture */}
         <div className="flex flex-col items-center">
@@ -28,7 +28,7 @@ export default function Profile() {
         </div>
 
         {/* Profile Details */}
-        <div className="w-full sm:w-1/2 space-y-3">
+        <div className="w-full md:w-1/2 space-y-3">
           <div className="flex justify-between items-center w-full pb-2 border-b border-gray-300">
               <h1 className="text-lg font-semibold italic">My Profile</h1>
 
