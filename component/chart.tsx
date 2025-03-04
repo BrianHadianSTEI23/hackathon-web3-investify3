@@ -7,7 +7,7 @@ export default function SalesChart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/data.json")
+    fetch("https://drive.google.com/file/d/1LMjDK2dUxh_WWbbc-mL_yLSbLSKX5_Pv/view?usp=sharing")
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .catch(error => console.error("Error loading data:", error));
@@ -15,7 +15,6 @@ export default function SalesChart() {
 
   return (
     <div style={{ width: "100%", height: 400 }}>
-      <h2>Sales Data</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
           <XAxis dataKey="date" />
