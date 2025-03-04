@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
-export default function SalesChart() {
+export default function Charts() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,6 @@ export default function SalesChart() {
 
   return (
     <div style={{ width: "100%", height: 400 }}>
-      <h2>Sales Data</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
           <XAxis dataKey="date" />
