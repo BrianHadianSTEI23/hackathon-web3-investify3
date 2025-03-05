@@ -1,6 +1,6 @@
 import { Navbar } from "@/component/Navbar";
 import { Dashboard } from "./dashboard/Dashboard";
-import { navItems } from "@data";
+import { navItems } from "../../data/data";
 import { WhyChoose } from "./dashboard/WhyChoose";
 import { Credits} from "./dashboard/Credits";
 

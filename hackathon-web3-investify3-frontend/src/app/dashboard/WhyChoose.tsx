@@ -1,5 +1,5 @@
 "use client";
-import { whyChooseFeatures } from "@data";
+import { whyChooseFeatures } from "../../../data/data";
 
 export const WhyChoose = () => {
   return (

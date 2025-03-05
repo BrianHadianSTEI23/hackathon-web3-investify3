@@ -1,12 +1,12 @@
 "use client";
 import { IoSettingsOutline } from "react-icons/io5";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, JSX } from "react";
 import {
   motion,
   AnimatePresence,
 } from "framer-motion";
 import { gsap } from "gsap";
-import { cn } from "../../lib/utils";
+import { cn } from "../lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./Button";
