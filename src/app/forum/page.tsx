@@ -88,7 +88,7 @@ function LikeButton({ likes = 0 }: CommentProps) {
 
   return (
     <button
-      className={`flex items-center gap-1 transition ${liked ? "text-[#967BBB]" : "hover:text-[#967BBB]"}`}
+      className={`flex items-center cursor-pointer gap-1 transition ${liked ? "text-[#967BBB]" : "hover:text-[#967BBB]"}`}
       onClick={handleLike}
     >
       <ThumbsUp size={16} fill={liked ? "#967BBB" : "none"} />
@@ -113,7 +113,7 @@ function CommentButton({ comments = 0 }: CommentProps) {
   return (
     <div className="w-3/4">
       <button
-        className={`flex items-center gap-1 transition ${
+        className={`flex items-center gap-1 cursor-pointer transition ${
           commented ? "text-[#967BBB]" : "hover:text-[#967BBB]"
         }`}
         onClick={() => setCommented(!commented)}

@@ -22,7 +22,7 @@ export function Invest() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`relative px-4 py-2 font-semibold ${
+              className={`relative px-4 py-2 font-semibold cursor-pointer ${
                 selectedCategory === category
                   ? "text-[#695192] after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-[#695192]"
                   : "text-gray-500 hover:text-gray-600"
@@ -76,7 +76,7 @@ export function Invest() {
             <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((prev) => prev - 1)}
-              className="p-2 border border-[#695192] rounded-full bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 border border-[#695192] rounded-full bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               <FaChevronLeft className="text-[#695192]" />
             </button>
@@ -88,7 +88,7 @@ export function Invest() {
             <button
               disabled={currentPage === totalPages}
               onClick={() => setCurrentPage((prev) => prev + 1)}
-              className="p-2 border border-[#695192] rounded-full bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 border border-[#695192] rounded-full bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               <FaChevronRight className="text-[#695192]" />
             </button>

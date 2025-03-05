@@ -101,7 +101,9 @@ export const Navbar = ({
           <Button onClick={() => router.push("/login")}>Login</Button>
 
           {/* Icon Settings */}
-          <IoSettingsOutline size={22} />
+          <div className="cursor-pointer">
+            <IoSettingsOutline size={22} />
+          </div>
         </div>
       </motion.div>
     </div>
