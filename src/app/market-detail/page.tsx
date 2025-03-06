@@ -2,25 +2,29 @@
 
 import { Navbar } from "@/component/Navbar";
 import { navItems } from "../../../data/data";
-import Charts from "../../../component/chart"
+import Charts from "../../component/chart"
 import { useState } from "react";
 import orderBookData from "../../../public/book-order.json";
 import keyStatisticsData from "../../../public/key-statistics.json"
 
+
 export default function MarketDetail() {
   const [bookOrder] = useState(orderBookData);
   const [keyStatistics] = useState(keyStatisticsData);
+  const statisticsMapping = {
+    Valuation: ['EPS', 'PBV', 'BVPS'],
+    Performance: ['RoA', 'RoE', 'GPM', 'OPM', 'NPM'],
+    Solvency: ['CR', 'DER'],
+    Dividend: ['NUMDIV', 'DIVSTY']
+  };
 
   return (
     // main container
-    <div className="min-h-screen m-0 p-[1vw] box-border font-[family-name:var(--font-geist-sans)] bg-white">
-      {/* navbar */}
-      <div className="flex justify-content items-center p-2 m-8">
-        <Navbar navItems={navItems}/>
-      </div>
+    <div className="flex flex-col items-center pt-15 m-4 sm:p-20">
+      <Navbar navItems={navItems} />
 
       {/* charts container */}
-      <div className="flex justify-center p-2 mb-2 items-center min-h-[65vh] w-[100%] border-2 border-solid border-black">
+      <div className="flex justify-center p-2 mb-2 items-center min-h-[65vh] w-[100%]">
         {/* charts */}
         <Charts/>
       </div>
@@ -30,23 +34,23 @@ export default function MarketDetail() {
         {/* title and codename container */}
         <div className="text-start w-[70%] m-2">
           {/* title */}
-          <div className="text-5xl font-bold">
+          <div className="text-2xl font-bold">
             Sumber Alfaria Trijaya Tbk
           </div>
 
           {/* codename */}
-          <div className="text-2xl font-semibold text-[#A0A3BD] ">
+          <div className="text-xl font-semibold text-[#A0A3BD] ">
             AMRT
           </div>
         </div>
 
         {/* price */}
-        <div className="p-2 flex flex-grow w-[20%] h-[100%] justify-center items-center text-xl font-semibold font-sans">
+        <div className="p-2 flex flex-grow w-[20%] h-[100%] justify-center items-center text-lg font-semibold font-sans">
           Rp. XXXXXX
         </div>
 
         {/* trade button */}
-        <div className="p-2 text-center flex flex-grow justify-center items-center w-[10%] min-h-full text-xl font-semibold text-white bg-[#B096D7] bg-cover rounded-xl cursor-pointer">
+        <div className="p-2 text-center flex flex-grow justify-center items-center w-[10%] min-h-full text-lg font-semibold text-white bg-[#B096D7] bg-cover rounded-xl cursor-pointer">
           Trade Now
         </div>
 
@@ -57,166 +61,48 @@ export default function MarketDetail() {
         <hr className="border-t border-gray-300 my-2 border-2 opacity-70"/>
       </div>
 
-      {/* book order and statistics container */}
-      <div className="w-full divide-x-2 divide-gray-300 flex min-h-[80vh] justify-center items-center">
-        {/* book order */}
-        <div className=" justify-center items-center w-[50%] p-2 min-h-[80vh]">
-          {/* header column */}
-          <div className="grid grid-cols-4 flex-col justify-center items-center text-center py-2 font-sans text-2xl font-semibold">
-            <div className="p-2">Quantity</div>
-            <div className="p-2">Bid</div>
-            <div className="p-2">Sell</div>
-            <div className="p-2">Quantity</div>
-          </div>
-
-          {/* data of each column */}
-          {bookOrder.map((item, index) => (
-            <div key={index} className="flex justify-around items-center space-y-4">
-              <div className="h-full">{item.quantity_bid}</div>
-              <div className="h-full">{item.bid}</div>
-              <div className="h-full">{item.sell}</div>
-              <div className="h-full">{item.sell_quantity}</div>
-            </div>
-          ))}
+      <div className="w-full flex flex-col md:flex-row min-h-[80vh] justify-center items-stretch divide-y md:divide-y-0 md:divide-x-2 divide-gray-300">
+      {/* Book Order Section */}
+      <div className="w-full md:w-1/2 p-4 overflow-auto">
+        <div className="grid grid-cols-4 text-center py-2 font-sans text-lg font-semibold">
+          <div>Quantity</div>
+          <div>Bid</div>
+          <div>Sell</div>
+          <div>Quantity</div>
         </div>
-
-
-        {/* statistics */}
-        <div className="flex-col justify-center items-center w-[50%] p-2">
-          {/* title and content container*/}
-          <div className="flex-col justify-center items-center w-full h-full p-2">
-            {/* title */}
-            <div className="text-xl font-sans font font-semibold mb-2">
-              Valuation
-            </div>
-
-            {/* content */}
-            <div className="justify-center items-center px-2">
-              {keyStatistics.map((item, index) => (
-                // container
-                <div key={index} className="fex flex-col space-y-2">
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">EPS </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.EPS}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">PBV </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.PBV}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">BVPS </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.BVPS}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">RPS </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.RPS}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">CFPS </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.CFPS}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">CPS </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.CPS}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
+        {bookOrder.map((item, index) => (
+          <div key={index} className="grid grid-cols-4 text-center py-2">
+            <div>{item.quantity_bid}</div>
+            <div>{item.bid}</div>
+            <div>{item.sell}</div>
+            <div>{item.sell_quantity}</div>
           </div>
-
-          {/* title and content container */}
-          <div className="flex-col justify-center items-center w-full h-full p-2">
-            {/* title */}
-            <div className="text-xl font-sans font font-semibold mb-2">
-              Performance
-            </div>
-
-            {/* content */}
-            <div className="justify-center items-center px-2">
-              {keyStatistics.map((item, index) => (
-                // container
-                <div key={index} className="fex flex-col space-y-2">
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">RoA </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.RoA}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">RoE </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.RoE}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">GPM </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.GPM}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">OPM </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.OPM}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">NPM </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.NPM}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* title and content container */}
-          <div className="flex-col justify-center items-center w-full h-full p-2">
-            {/* title */}
-            <div className="text-xl font-sans font font-semibold mb-2">
-              Solvency
-            </div>
-
-            {/* content */}
-            <div className="justify-center items-center px-2">
-              {keyStatistics.map((item, index) => (
-                // container
-                <div key={index} className="fex flex-col space-y-2">
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">Current Ratio </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.CR}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">DER </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.DER}</div>
-                  </div>                  
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* title and content container */}
-          <div className="flex-col justify-center items-center w-full h-full p-2">
-            {/* title */}
-            <div className="text-xl font-sans font font-semibold mb-2">
-              Dividend
-            </div>
-
-            {/* content */}
-            <div className="justify-center items-center px-2">
-              {keyStatistics.map((item, index) => (
-                // container
-                <div key={index} className="fex flex-col space-y-2">
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">Numeric Dividend </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.NUMDIV}</div>
-                  </div>
-                  <div className="flex px-4">
-                    <div className="w-[80%] flex text-start justify-start items-center h-full">Dividend Style </div>
-                    <div className="w-[20%] flex items-center justify-end">{item.DIVSTY}</div>
-                  </div>                  
-                </div>
-              ))}
-            </div>
-          </div>
-
-
-        </div>
+        ))}
       </div>
 
+      {/* Statistics Section */}
+      <div className="w-full md:w-1/2 p-4 space-y-8 overflow-auto">
+        {Object.entries(statisticsMapping).map(([section, keys], sectionIndex) => (
+          <div key={sectionIndex} className="space-y-4">
+            <div className="text-xl font-sans font-semibold mb-2">{section}</div>
+            {keyStatistics.map((item, index) => (
+              <div key={index} className="space-y-2">
+                {keys.map((key) => (
+                  <div key={key} className="flex justify-between px-4">
+                    <div className="flex-grow text-start">{key}</div>
+                    <div className="flex-none text-end">{item[key]}</div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+
     </div>
+
+        </div>
   );
 }
 
