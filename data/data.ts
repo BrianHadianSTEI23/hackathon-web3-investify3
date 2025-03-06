@@ -140,6 +140,11 @@ export const profileData = {
     walletId: "XXXXXXXXXX",
   };
   
+  export const dummyData = [
+    { date: "02/24/2025", open: 177.57, high: 177.8, low: 176.0, close: 176.62, volume: 236800, brand_name: "toyota"},
+    { date: "02/25/2025", open: 180.7, high: 180.93, low: 178.14, close: 179.46, volume: 262000, brand_name: "toyota"},
+    { date: "02/26/2025", open: 181.69, high: 183.06, low: 181.16, close: 181.21, volume: 246000, brand_name: "toyota"}
+];
 
 export const data = [
     { month: "Jan", "2023": 15000000, "2024": 25000000 },
