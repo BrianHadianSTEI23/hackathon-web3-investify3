@@ -6,6 +6,7 @@ import Charts from "../../component/chart"
 import { useState } from "react";
 import orderBookData from "../../../public/book-order.json";
 import keyStatisticsData from "../../../public/key-statistics.json"
+import { Button } from "@/component/Button";
 
 
 export default function MarketDetail() {
@@ -20,7 +21,7 @@ export default function MarketDetail() {
 
   return (
     // main container
-    <div className="flex flex-col items-center pt-15 m-4 sm:p-20">
+    <div className="flex flex-col items-center pt-15 m-4">
       <Navbar navItems={navItems} />
 
       {/* charts container */}
@@ -30,7 +31,7 @@ export default function MarketDetail() {
       </div>
 
       {/* title, codename, price and trade button */}
-      <div className="flex justify-center items-center w-[100%] text-start px-4 pt-4">
+      <div className="flex justify-center items-center w-[100%] text-start gap-3 px-4 pt-4">
         {/* title and codename container */}
         <div className="text-start w-[70%] m-2">
           {/* title */}
@@ -48,11 +49,10 @@ export default function MarketDetail() {
         <div className="p-2 flex flex-grow w-[20%] h-[100%] justify-center items-center text-lg font-semibold font-sans">
           Rp. XXXXXX
         </div>
-
         {/* trade button */}
-        <div className="p-2 text-center flex flex-grow justify-center items-center w-[10%] min-h-full text-lg font-semibold text-white bg-[#B096D7] bg-cover rounded-xl cursor-pointer">
-          Trade Now
-        </div>
+        <Button>
+          Trade
+        </Button>
 
       </div>
 
