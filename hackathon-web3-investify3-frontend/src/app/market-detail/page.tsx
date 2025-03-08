@@ -8,6 +8,7 @@ import orderBookData from "../../../public/book-order.json";
 import keyStatisticsData from "../../../public/key-statistics.json";
 import { Button } from "@/component/Button";
 import { stockPrices, conversionRates } from "../../../data/data"; // Import dummy data
+import { connectMetaMask } from "@lib";
 
 export default function MarketDetail() {
   const [bookOrder] = useState(orderBookData);
@@ -22,12 +23,13 @@ export default function MarketDetail() {
   const [wallet, setWallet] = useState<string | null>(null); // State untuk menyimpan wallet pengguna
 
   // Ambil wallet dari localStorage saat komponen dimuat
-  useEffect(() => {
-    const storedWallet = localStorage.getItem("wallet");
-    if (storedWallet) {
-      setWallet(storedWallet);
+  const handleConnect = async () => {
+    const result = await connectMetaMask();
+    if (result) {
+      setWallet(result.account);
     }
-  }, []);
+  };
+  handleConnect()
 
   // Simulasi menerima harga terbaru dari Charts component
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function MarketDetail() {
     } else {
       const totalPrice = parseFloat(shares) * stockPrice;
       const finalConvertedAmount =
-        totalPrice * (conversionRates[selectedUnit as keyof typeof conversionRates] || 1);
+      totalPrice * (conversionRates[selectedUnit as keyof typeof conversionRates] || 1);
       setConvertedAmount(finalConvertedAmount.toFixed(2)); // Format ke 2 angka desimal
     }
   }, [shares, selectedStock, selectedUnit, stockPrice]);
@@ -68,7 +70,9 @@ export default function MarketDetail() {
 
         {/* Trade Button */}
         <Button 
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            setIsOpen(true)
+          }}
           disabled={!wallet} // Jika tidak ada wallet, tombol tidak bisa diklik
           className={wallet ? "" : "bg-gray-400 cursor-not-allowed"}
         >
