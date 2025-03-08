@@ -1,10 +1,8 @@
 const fs = require('fs');
 
-// Baca file JSON
 const rawData = fs.readFileSync('stocks.json', 'utf8');
 const jsonData = JSON.parse(rawData);
 
-// Filter dan format data
 const allowedBrands = ['toyota', 'adidas', 'puma'];
 const formattedData = jsonData
     .filter(item => allowedBrands.includes(item.Brand_Name.toLowerCase()))
@@ -18,7 +16,6 @@ const formattedData = jsonData
         brand_name: item.Brand_Name.toLowerCase()
     }));
 
-// Buat file JavaScript
 const jsContent = `export const dummyData = ${JSON.stringify(formattedData, null, 4)};`;
 
 fs.writeFileSync('saham.ts', jsContent, 'utf8');
