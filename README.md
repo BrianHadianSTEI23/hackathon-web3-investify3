@@ -2,7 +2,7 @@
 
 An IC-blockchain-based Financial Management Web Application
 
-![Homepage](./doc/homepage.png?raw=true "Title")
+![Homepage](doc/homepage.png)
 
 ## Description
 
@@ -43,6 +43,7 @@ git clone https://github.com/Investify3/hackathon-web3-investify3
 1. Open command terminal: Enter the commands to start dfx local server in background:
 ```bash
 cd hackathon-web3-investify3
+cd investify3
 ```
 
 2. Deploying the canister:
