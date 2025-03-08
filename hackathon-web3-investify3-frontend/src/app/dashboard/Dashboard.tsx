@@ -1,11 +1,21 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/component/Button";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
 export const Dashboard = () => {
-  const router = useRouter(); 
+  const router = useRouter();
+  const [wallet, setWallet] = useState<string | null>(null); // State untuk menyimpan status login
+
+  // Cek apakah user sudah login dengan mengambil wallet dari localStorage
+  useEffect(() => {
+    const storedWallet = localStorage.getItem("wallet");
+    if (storedWallet) {
+      setWallet(storedWallet);
+    }
+  }, []);
 
   return (
     <section className="relative min-h-180 w-screen overflow-x-hidden">
@@ -21,12 +31,16 @@ export const Dashboard = () => {
             intermediaries through blockchain and smart contracts for secure,
             transparent, and efficient trading.
           </p>
-          <Button
-            onClick={() => router.push("/login")}
-            className="flex flex-row items-center gap-2 w-35 justify-center"
-          >
-            Login Now <FaLongArrowAltRight />
-          </Button>
+
+          {/* Tampilkan tombol hanya jika pengguna BELUM login */}
+          {!wallet && (
+            <Button
+              onClick={() => router.push("/login")}
+              className="flex flex-row items-center gap-2 w-35 justify-center"
+            >
+              Login Now <FaLongArrowAltRight />
+            </Button>
+          )}
         </div>
         <Image src="/invest.png" alt="Logo" width={250} height={250} />
       </div>

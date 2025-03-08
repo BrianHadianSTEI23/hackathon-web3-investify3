@@ -62,6 +62,7 @@ export const Navbar = ({
   const handleLogout = () => {
     localStorage.removeItem("wallet");
     setWallet(null);
+    router.push("/")
   };
 
   return (

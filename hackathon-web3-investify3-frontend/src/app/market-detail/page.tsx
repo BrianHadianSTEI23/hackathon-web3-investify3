@@ -19,6 +19,15 @@ export default function MarketDetail() {
   const [selectedUnit, setSelectedUnit] = useState("ETH");
   const [convertedAmount, setConvertedAmount] = useState("0");
   const [stockPrice, setStockPrice] = useState(stockPrices[selectedStock]); // Harga saham terbaru dari Chart
+  const [wallet, setWallet] = useState<string | null>(null); // State untuk menyimpan wallet pengguna
+
+  // Ambil wallet dari localStorage saat komponen dimuat
+  useEffect(() => {
+    const storedWallet = localStorage.getItem("wallet");
+    if (storedWallet) {
+      setWallet(storedWallet);
+    }
+  }, []);
 
   // Simulasi menerima harga terbaru dari Charts component
   useEffect(() => {
@@ -31,7 +40,9 @@ export default function MarketDetail() {
       setConvertedAmount("0");
     } else {
       const totalPrice = parseFloat(shares) * stockPrice;
-      const finalConvertedAmount = totalPrice * (conversionRates[selectedUnit as keyof typeof conversionRates] || 1);      setConvertedAmount(finalConvertedAmount.toFixed(2)); // Format ke 2 angka desimal
+      const finalConvertedAmount =
+        totalPrice * (conversionRates[selectedUnit as keyof typeof conversionRates] || 1);
+      setConvertedAmount(finalConvertedAmount.toFixed(2)); // Format ke 2 angka desimal
     }
   }, [shares, selectedStock, selectedUnit, stockPrice]);
 
@@ -56,7 +67,11 @@ export default function MarketDetail() {
         </div>
 
         {/* Trade Button */}
-        <Button onClick={() => setIsOpen(true)} >
+        <Button 
+          onClick={() => setIsOpen(true)}
+          disabled={!wallet} // Jika tidak ada wallet, tombol tidak bisa diklik
+          className={wallet ? "" : "bg-gray-400 cursor-not-allowed"}
+        >
           Trade
         </Button>
       </div>
@@ -128,21 +143,12 @@ export default function MarketDetail() {
               <div className="text-black text-xl px-2 font-semibold">{convertedAmount} {selectedUnit}</div>
             </div>
 
-            {/* Currency Selection */}
-            <select
-              value={selectedUnit}
-              onChange={(e) => setSelectedUnit(e.target.value)}
-              className="bg-gray-200 px-2 py-1 rounded-lg"
-            >
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="GBP">GBP</option>
-              <option value="BTC">BTC</option>
-              <option value="ETH">ETH</option>
-            </select>
-
             {/* Finish Button */}
-            <Button onClick={() => setIsOpen(false)}  className="ml-4 rounded-xl">
+            <Button 
+              disabled={!wallet} // Tombol tidak bisa diklik jika tidak login
+              onClick={() => setIsOpen(false)}  
+              className={wallet ? "ml-4 rounded-xl" : "bg-gray-400 cursor-not-allowed"}
+            >
               Trade
             </Button>
           </div>

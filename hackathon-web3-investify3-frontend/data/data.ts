@@ -250,21 +250,25 @@ export const categories = ["Stocks", "Bonds", "Mutual Funds"];
 
 
 export const trendingToday = [
-  { name: "BRRI", price: "8,600", change: "+51 (3.23%)", isUp: true },
-  { name: "ARB", price: "8,600", change: "+51 (3.23%)", isUp: true },
-  { name: "FSX", price: "8,600", change: "+51 (3.23%)", isUp: true },
-  { name: "BRRI", price: "8,600", change: "+51 (3.23%)", isUp: true },
+  { name: "AAPL", price: "8,600", change: "+51 (3.23%)", isUp: true },
+  { name: "AAPL", price: "8,600", change: "+51 (3.23%)", isUp: true },
+  { name: "AAPL", price: "8,600", change: "+51 (3.23%)", isUp: true },
+  { name: "AAPL", price: "8,600", change: "+51 (3.23%)", isUp: true },
 ];
 
 export const stockList = [
-  { name: "DHDI", fullName: "PT. Dutilaga Pertama", price: "8,600", change: "+50 (3.23%)", isUp: true },
-  { name: "AMRI", fullName: "PT. Amna Merapi", price: "2,421", change: "-121 (4.8%)", isUp: false },
-  { name: "ODD", fullName: "PT. Okubo Dokuri", price: "5,300", change: "+41 (2.23%)", isUp: true },
-  { name: "PYQ", fullName: "PT. Himnas Yosque", price: "3,867", change: "-71 (1.8%)", isUp: false },
-  { name: "DAN", fullName: "PT. Danang Amin", price: "6,600", change: "-281 (6.02%)", isUp: false },
-  { name: "HELENI", fullName: "PT. Helena Inves", price: "3,600", change: "+41 (2.23%)", isUp: true },
-  { name: "TIRA", fullName: "PT. Tiran Capital", price: "2,800", change: "+32 (1.8%)", isUp: true },
-  { name: "ZONA", fullName: "PT. Zona Equity", price: "7,200", change: "-90 (2.7%)", isUp: false },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true },
+  { name: "AAPL", fullName: "AAPL Stock", price: "8,600", change: "+50 (3.23%)", isUp: true }
 ];
 
 export const stockPrices = {
