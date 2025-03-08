@@ -2,7 +2,7 @@
 
 An IC-blockchain-based Financial Management Web Application
 
-![Homepage](doc/homepage.png)
+![Homepage](doc/homepage.jpeg)
 
 ## Description
 
