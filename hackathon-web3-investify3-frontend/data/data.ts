@@ -75,72 +75,58 @@ export type Comment = {
   
   export const stockNews: StockNews[] = [
     {
-      title: "Mengukur Dampak Peluncuran Bank Emas terhadap Kinerja Saham HRTA, ANTM & BRIS",
-      source: "Bisnis.com",
-      date: "14 jam lalu",
-      link: "https://market.bisnis.com/read/20250226/189/1842903/mengukur-dampak-peluncuran-bank-emas-terhadap-kinerja-saham-hrta-antm-bris",
-      imageUrl: "/news-image-1.jpg",
+      title: "Apple Shares Surge After Record iPhone Sales",
+      source: "Bloomberg",
+      date: "5 hours ago",
+      link: "https://www.bloomberg.com/news/articles/apple-record-iphone-sales",
+      imageUrl: "/news-image-7.jpg",
       stocks: [
-        { name: "BRIS", change: -4.53 },
-        { name: "ANTM", change: 2.35 }
+        { name: "AAPL", change: 3.5 }
       ]
     },
     {
-      title: "Cek Rekomendasi Saham ANTM dan HRTA, Setelah Bullion Bank Resmi Hadir",
-      source: "Kontan.co.id",
-      date: "12 jam lalu",
-      link: "https://investasi.kontan.co.id/news/cek-rekomendasi-saham-antm-dan-hrta-setelah-bullion-bank-resmi-hadir",
-      imageUrl: "/news-image-2.jpg",
+      title: "Tesla Stock Drops Amidst Production Challenges",
+      source: "Reuters",
+      date: "3 hours ago",
+      link: "https://www.reuters.com/business/tesla-stock-drops-production-challenges",
+      imageUrl: "/news-image-8.jpg",
       stocks: [
-        { name: "ANTM", change: 1.8 },
-        { name: "HRTA", change: 2.3 }
+        { name: "TSLA", change: -2.1 }
       ]
     },
     {
-        title: "IHSG Hari Ini Ditutup Menguat, Saham BBCA dan BBRI Naik Signifikan",
-        source: "CNBC Indonesia",
-        date: "10 jam lalu",
-        link: "https://www.cnbcindonesia.com/market/20250226/ihsg-hari-ini-ditutup-menguat-saham-bbca-dan-bbri-naik-signifikan",
-        imageUrl: "/news-image-3.jpg",
-        stocks: [
-          { name: "BBCA", change: 1.2 },
-          { name: "BBRI", change: 2.1 }
-        ]
-      },
-      {
-        title: "Investor Asing Serok Saham TLKM dan GOTO, Ada Apa?",
-        source: "Detik Finance",
-        date: "8 jam lalu",
-        link: "https://finance.detik.com/bursa-dan-valas/d-6603908/investor-asing-serok-saham-tlkm-dan-goto-ada-apa",
-        imageUrl: "/news-image-4.jpg",
-        stocks: [
-          { name: "TLKM", change: 1.7 },
-          { name: "GOTO", change: 3.2 }
-        ]
-      },
-      {
-        title: "Saham Bank Jago (ARTO) Melonjak 5% Setelah Laporan Keuangan Kuartal IV",
-        source: "Kompas.com",
-        date: "6 jam lalu",
-        link: "https://money.kompas.com/read/20250226/112530426/saham-bank-jago-arto-melonjak-5-setelah-laporan-keuangan-kuartal-iv",
-        imageUrl: "/news-image-5.jpg",
-        stocks: [
-          { name: "ARTO", change: 5.0 },
-          { name: "BBRI", change: 1.5 }
-        ]
-      },
-      {
-        title: "Saham ASII dan UNVR Anjlok, Apa Penyebabnya?",
-        source: "Liputan6",
-        date: "4 jam lalu",
-        link: "https://www.liputan6.com/bisnis/read/5024092/saham-asii-dan-unvr-anjlok-apa-penyebabnya",
-        imageUrl: "/news-image-6.jpg",
-        stocks: [
-          { name: "ASII", change: -2.8 },
-          { name: "UNVR", change: -3.4 }
-        ]
-      }
+      title: "Microsoft Acquires Activision Blizzard: Impact on Stocks",
+      source: "Financial Times",
+      date: "2 hours ago",
+      link: "https://www.ft.com/content/microsoft-activision-blizzard-acquisition",
+      imageUrl: "/news-image-9.jpg",
+      stocks: [
+        { name: "MSFT", change: 1.8 },
+        { name: "ATVI", change: 4.0 }
+      ]
+    },
+    {
+      title: "NVIDIA Hits All-Time High as AI Demand Soars",
+      source: "CNBC",
+      date: "1 hour ago",
+      link: "https://www.cnbc.com/nvidia-all-time-high-ai-demand",
+      imageUrl: "/news-image-10.jpg",
+      stocks: [
+        { name: "NVDA", change: 5.6 }
+      ]
+    },
+    {
+      title: "Amazon Sees Sluggish Growth in Q4 Earnings Report",
+      source: "The Wall Street Journal",
+      date: "30 minutes ago",
+      link: "https://www.wsj.com/articles/amazon-q4-earnings-sluggish-growth",
+      imageUrl: "/news-image-11.jpg",
+      stocks: [
+        { name: "AMZN", change: -1.7 }
+      ]
+    }
   ];
+  
   
 
 export const profileData = {
@@ -170,19 +156,19 @@ export const data = [
 
 export const orderStats = {
   totalOrders: {
-    saham: 1200000,
-    reksadana: 800000,
-    obligasi: 500000,
+    stocks: 1200000,
+    mutualFunds: 800000,
+    bonds: 500000,
   },
   totalReturns: {
-    saham: 300000,
-    reksadana: 200000,
-    obligasi: 100000,
+    stocks: 300000,
+    mutualFunds: 200000,
+    bonds: 100000,
   },
   totalRevenue: {
-    saham: 1500000,
-    reksadana: 1000000,
-    obligasi: 7500000,
+    stocks: 1500000,
+    mutualFunds: 1000000,
+    bonds: 7500000,
   },
 };
 
