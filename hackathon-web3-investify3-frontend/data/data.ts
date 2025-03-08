@@ -1,5 +1,17 @@
 import { FaShieldAlt, FaBolt, FaGlobe, FaChartLine } from "react-icons/fa";
 
+export const tradeMode = [
+  "Buy", 
+  "Sell",
+  "Convert"
+]
+
+export const cryptoCurrencies = [
+  "Solana",
+  "Ethereum",
+  "ICP"
+]
+
 export const navItems = [
     { name: "Invest", link: "/invest" },
     { name: "News", link: "/news" },

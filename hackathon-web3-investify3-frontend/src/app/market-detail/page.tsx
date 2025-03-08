@@ -1,15 +1,32 @@
 'use client';
 
 import { Navbar } from "@/component/Navbar";
-import { navItems } from "../../../data/data";
+import { navItems, tradeMode, cryptoCurrencies } from "../../../data/data";
 import Charts from "../../../component/chart"
+import { connectMetaMask } from "../../../lib/utils";
 import { useState } from "react";
 import orderBookData from "../../../public/book-order.json";
 import keyStatisticsData from "../../../public/key-statistics.json"
 
 export default function MarketDetail() {
+  const [wallet, setWallet] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
   const [bookOrder] = useState(orderBookData);
   const [keyStatistics] = useState(keyStatisticsData);
+  
+  // get connection to wallet
+  const handleConnection = async () => {
+    const result = await connectMetaMask()
+    if (result) {
+      setWallet(result.account)
+    }
+  }
+
+  // do pop up of input amount when you want to trade
+  const tradePopUp = async () => {
+    await handleConnection();
+    setIsOpen(true)
+  }
 
   return (
     // main container
@@ -46,7 +63,7 @@ export default function MarketDetail() {
         </div>
 
         {/* trade button */}
-        <div className="p-2 text-center flex flex-grow justify-center items-center w-[10%] min-h-full text-xl font-semibold text-white bg-[#B096D7] bg-cover rounded-xl cursor-pointer">
+        <div className="p-2 text-center flex flex-grow justify-center items-center w-[10%] min-h-full text-xl font-semibold text-white bg-[#B096D7] bg-cover rounded-xl cursor-pointer" onClick={tradePopUp}>
           Trade Now
         </div>
 
@@ -213,9 +230,68 @@ export default function MarketDetail() {
           </div>
 
 
+
         </div>
       </div>
 
+      {/* pop up for inputting number */}
+      {
+        isOpen && 
+        (
+          // main container that fill all the screen
+          <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
+            <div className="bg-white p-4 rounded-lg shadow-lg max-w-[90vw] min-w-[60%] text-center ">
+              {/* return button */}
+              <div className="flex w-full justify-starts items-center p-2" onClick={() => setIsOpen(false)}>
+                <img src="/exit.png" alt="back-button" className="w-5"/>
+              </div>
+    
+              {/* amount and input and mode and return container */}
+              <div className="bg-[#A0A3BD] rounded-lg p-2 mb-4">
+                {/* amount */}
+                <div className="text-left text-xl px-2">
+                  Enter Amount
+                </div>
+                {/* input */}
+                <div className="flex justify-end text-2xl pb-2 mr-2">
+                  <input type="text" placeholder="XXXXXX" className="text-right w-full"/>
+                </div>
+    
+                {/* mode */}
+                <div className="flex justify-end items-center px-2">
+                  { cryptoCurrencies[0] }
+                </div>
+              </div>
+    
+              {/* estimated price, value and mode container*/}
+              <div className="flex justify-center items-center bg-[#EFF0F6] rounded-lg">
+                {/* estimated price and value container */}
+                <div className="flex w-full justify-start items-center p-2">
+                  <div className="text-xl py-2 text-left">
+                    Estimated Price : 
+                  </div>
+                  <div className="flex text-2xl ml-6">
+                    Value
+                  </div>
+                </div>
+    
+                {/* mode container */}
+                <div className="flex text-left justify-center items-center w-[25%] bg-[#D9D9D9] p-2 m-2 rounded-lg">
+                  { cryptoCurrencies[1] }
+                </div>
+              </div>
+    
+              {/* finish container */}
+              <div className="flex w-full justify-end items-center">
+                {/* finish */}
+                <div className="my-4 w-[20%] bg-[#B69BDC] p-2 rounded-lg">
+                  Finish
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }
     </div>
   );
 }
