@@ -10,6 +10,55 @@ import keyStatisticsData from "../../../hackathon-web3-investify3-frontend/publi
 import { Button } from "../../../hackathon-web3-investify3-frontend/src/component/Button";
 import { stockPrices, conversionRates } from "../../../hackathon-web3-investify3-frontend/data/data"; // Import dummy data
 
+"use client";
+
+import { useState, useEffect } from "react";
+import { Actor, HttpAgent } from "@dfinity/agent";
+import { idlFactory } from "../../declarations/hackathon-web3-investify3-backend";
+
+const agent = new HttpAgent();
+const backend = Actor.createActor(idlFactory, { agent, canisterId: "your_canister_id" });
+
+function TransactionComponent() {
+    const [transactions, setTransactions] = useState<any[]>([]);
+
+    async function createTransaction() {
+        await backend.createTransaction("alice", "bob", 100);
+        const updatedTransactions = await backend.getTransactions();
+        setTransactions(updatedTransactions);
+    }
+
+    useEffect(() => {
+        async function fetchTransactions() {
+            const data = await backend.getTransactions();
+            setTransactions(data);
+        }
+        fetchTransactions();
+    }, []);
+
+    return (
+        <div className="p-4">
+            <h1 className="text-xl font-bold">ICP Transactions</h1>
+            <button
+                onClick={createTransaction}
+                className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+            >
+                Create Transaction
+            </button>
+
+            <ul className="mt-4">
+                {transactions.map((tx, index) => (
+                    <li key={index} className="border p-2 my-2">
+                        <p>From: {tx.sender}</p>
+                        <p>To: {tx.receiver}</p>
+                        <p>Amount: {tx.amount} ICP</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
 export default function MarketDetail() {
   const [bookOrder] = useState(orderBookData);
   const [keyStatistics] = useState(keyStatisticsData);
@@ -143,7 +192,9 @@ export default function MarketDetail() {
             </select>
 
             {/* Finish Button */}
-            <Button onClick={() => setIsOpen(false)}  className="ml-4 rounded-xl">
+            <Button onClick={() => {
+              setIsOpen(false)
+              TransactionComponent}}  className="ml-4 rounded-xl">
               Trade
             </Button>
           </div>
