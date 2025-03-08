@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, Pie, Cell, Sector, ResponsiveContainer } from "recharts";
 import { useState } from "react";
-import { orderStats } from "../../data/data";
+import { orderStats } from "@data";
 
 const COLORS = ["#8a6ab8", "#b48de6", "#d5b3ff"]; 
 
