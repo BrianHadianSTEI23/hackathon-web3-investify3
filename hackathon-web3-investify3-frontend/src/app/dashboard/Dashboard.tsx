@@ -28,7 +28,7 @@ export const Dashboard = () => {
             Login Now <FaLongArrowAltRight />
           </Button>
         </div>
-        <Image src="/logo.svg" alt="Logo" width={400} height={400} />
+        <Image src="/invest.png" alt="Logo" width={250} height={250} />
       </div>
     </section>
   );
