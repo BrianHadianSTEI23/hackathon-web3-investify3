@@ -1,14 +1,14 @@
 "use client";
 
-import { Navbar } from "../../../../hackathon-web3-investify3-frontend/src/component/Navbar";
-import { navItems } from "../../../../hackathon-web3-investify3-frontend/data/data"
-import Charts from "../../../../hackathon-web3-investify3-frontend/src/component/Chart";
+import { Navbar } from "../../../hackathon-web3-investify3-frontend/src/component/Navbar";
+import { navItems } from "../../../hackathon-web3-investify3-frontend/data/data"
+import Charts from "../../../hackathon-web3-investify3-frontend/src/component/Chart";
 import React from "react";
 import { useState, useEffect } from "react";
-import orderBookData from "../../../../hackathon-web3-investify3-frontend/public/book-order.json";
-import keyStatisticsData from "../../../../hackathon-web3-investify3-frontend/public/key-statistics.json";
-import { Button } from "../../../../hackathon-web3-investify3-frontend/src/component/Button";
-import { stockPrices, conversionRates } from "../../../../hackathon-web3-investify3-frontend/data/data"; // Import dummy data
+import orderBookData from "../../../hackathon-web3-investify3-frontend/public/book-order.json";
+import keyStatisticsData from "../../../hackathon-web3-investify3-frontend/public/key-statistics.json";
+import { Button } from "../../../hackathon-web3-investify3-frontend/src/component/Button";
+import { stockPrices, conversionRates } from "../../../hackathon-web3-investify3-frontend/data/data"; // Import dummy data
 
 export default function MarketDetail() {
   const [bookOrder] = useState(orderBookData);
