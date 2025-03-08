@@ -1,13 +1,31 @@
 "use client";
-import { useState } from "react";
-import { FaGoogle, FaEthereum } from "react-icons/fa";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { FaEthereum } from "react-icons/fa";
 import { Button } from "@/component/Button";
 import Image from "next/image";
-import Link from "next/link";
+import { connectMetaMask } from "../../../lib/utils";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [wallet, setWallet] = useState<string | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Jika sudah login, langsung redirect ke home
+    if (wallet) {
+      router.push("/");
+    }
+  }, [wallet, router]);
+
+  // Fungsi untuk login dengan MetaMask
+  const handleLogin = async () => {
+    const result = await connectMetaMask();
+    if (result) {
+      setWallet(result.account);
+      localStorage.setItem("wallet", result.account); // Simpan di localStorage agar persistent
+    }
+  };
 
   return (
     <section className="flex items-center justify-center min-h-screen bg-gray-100 px-6">
@@ -23,54 +41,21 @@ export default function Login() {
           </p>
         </div>
 
-        {/* Login Form */}
-        <form className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#695192]"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#695192]"
-            required
-          />
-          <Button className="w-full bg-[#695192] text-white py-2 rounded-lg hover:bg-[#5B3E8A] transition">
-            Login
-          </Button>
-        </form>
-
         {/* Divider */}
         <div className="flex items-center justify-center space-x-2">
           <span className="w-full border-t border-gray-300"></span>
-          <span className="text-sm text-gray-500">OR</span>
-          <span className="w-full border-t border-gray-300"></span>
         </div>
 
-        {/* Alternative Login */}
+        {/* Jika belum login, tampilkan tombol login */}
         <div className="flex flex-col space-y-3">
-          <Button className="w-full flex items-center justify-center bg-gray-400 text-gray-800 py-2 rounded-lg hover:bg-gray-500 transition">
+          <Button
+            className="w-full flex items-center justify-center text-gray-800 py-2 rounded-lg"
+            onClick={handleLogin}
+          >
             <FaEthereum className="mr-2 text-xl" /> Login with Web3 Wallet
           </Button>
-          <Button className="w-full flex items-center justify-center bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
-            <FaGoogle className="mr-2 text-xl" /> Login with Google
-          </Button>
         </div>
-
-        {/* Sign Up Link */}
-        <p className="text-sm text-center text-gray-600">
-          Don't have an account?{" "}
-          <Link href="/signup" className="text-[#695192] hover:underline">
-            Sign up
-          </Link>
-        </p>
       </div>
     </section>
   );
-};
+}

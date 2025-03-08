@@ -1,10 +1,7 @@
 "use client";
 import { IoSettingsOutline } from "react-icons/io5";
 import React, { useState, useRef, useEffect, JSX } from "react";
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
+import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { cn } from "../lib/utils";
 import Link from "next/link";
@@ -24,18 +21,25 @@ export const Navbar = ({
   const navContainerRef = useRef<HTMLDivElement>(null);
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [wallet, setWallet] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
+    // Cek apakah pengguna sudah login sebelumnya
+    const savedWallet = localStorage.getItem("wallet");
+    if (savedWallet) {
+      setWallet(savedWallet);
+    }
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY === 0) {
         setIsNavVisible(true);
       } else if (currentScrollY > lastScrollY) {
-        setIsNavVisible(false); 
+        setIsNavVisible(false);
       } else {
-        setIsNavVisible(true); 
+        setIsNavVisible(true);
       }
 
       setLastScrollY(currentScrollY);
@@ -54,6 +58,12 @@ export const Navbar = ({
       duration: 0.3,
     });
   }, [isNavVisible]);
+
+  // Fungsi Logout
+  const handleLogout = () => {
+    localStorage.removeItem("wallet");
+    setWallet(null);
+  };
 
   return (
     <div ref={navContainerRef} className="fixed top-5 inset-x-0 flex justify-center z-[5000]">
@@ -97,9 +107,21 @@ export const Navbar = ({
               </Link>
             ))}
           </div>
-          
-          {/* Tombol Login */}
-          <Button onClick={() => router.push("/login")}>Login</Button> 
+
+          {/* Jika belum login, tampilkan tombol Login */}
+          {!wallet ? (
+            <Button onClick={() => router.push("/login")}>Login</Button>
+          ) : (
+            <div className="flex items-center gap-x-4">
+              <div className="text-sm font-semibold text-gray-700">
+                Connected: {wallet.substring(0, 6)}...{wallet.slice(-4)}
+              </div>
+              {/* Tombol Logout */}
+              <Button onClick={handleLogout} className="text-white bg-red-500 hover:bg-red-700 px-4 py-2 rounded-lg">
+                Logout
+              </Button>
+            </div>
+          )}
 
           {/* Icon Settings */}
           <IoSettingsOutline size={22} />

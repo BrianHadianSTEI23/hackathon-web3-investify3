@@ -267,3 +267,16 @@ export const stockList = [
   { name: "ZONA", fullName: "PT. Zona Equity", price: "7,200", change: "-90 (2.7%)", isUp: false },
 ];
 
+export const stockPrices = {
+  AAPL: 175, // Harga per saham dalam USD
+  MSFT: 320,
+  GOOGL: 130,
+};
+
+export const conversionRates = {
+  USD: 1, // USD ke USD (tetap sama)
+  EUR: 0.92, // 1 USD = 0.92 EUR
+  GBP: 0.79, // 1 USD = 0.79 GBP
+  BTC: 0.000025, // 1 USD = 0.000025 BTC
+  ETH: 0.00035,// 1 USD = 0.00035 ETH
+};
