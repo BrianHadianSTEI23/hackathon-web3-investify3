@@ -1,6 +1,6 @@
 # Investify3
 
-An IC-blockchain-based Financial Management Web Application
+An IC-blockchain-based Investment Web Application
 
 ![Homepage](doc/homepage.jpeg)
 
