@@ -15,7 +15,7 @@ export default function MarketDetail() {
   const [isOpen, setIsOpen] = useState(false);
   const [shares, setShares] = useState(""); // Jumlah lembar saham yang dimasukkan
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
-  const [selectedStock, setSelectedStock] = useState("AAPL");
+  const [selectedStock, setSelectedStock] = useState<keyof typeof stockPrices>("AAPL");
   const [selectedUnit, setSelectedUnit] = useState("ETH");
   const [convertedAmount, setConvertedAmount] = useState("0");
   const [stockPrice, setStockPrice] = useState(stockPrices[selectedStock]); // Harga saham terbaru dari Chart
@@ -31,8 +31,7 @@ export default function MarketDetail() {
       setConvertedAmount("0");
     } else {
       const totalPrice = parseFloat(shares) * stockPrice;
-      const finalConvertedAmount = totalPrice * (conversionRates[selectedUnit] || 1);
-      setConvertedAmount(finalConvertedAmount.toFixed(2)); // Format ke 2 angka desimal
+      const finalConvertedAmount = totalPrice * (conversionRates[selectedUnit as keyof typeof conversionRates] || 1);      setConvertedAmount(finalConvertedAmount.toFixed(2)); // Format ke 2 angka desimal
     }
   }, [shares, selectedStock, selectedUnit, stockPrice]);
 
