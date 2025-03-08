@@ -211,7 +211,7 @@ export const whyChooseFeatures = [
 
 
 export const portfolioData = {
-  labels: ["Reksadana", "Saham", "Crypto"],
+  labels: ["Stocks", "Bonds", "Mutual Funds", "Cryptocurrency"],
   datasets: [
     {
       data: [50, 30, 20], // Persentase kepemilikan
@@ -246,7 +246,7 @@ export const trendingInvestments = [
   },
 ];
 
-export const categories = ["Stocks", "Bonds", "Mutual Funds"];
+export const categories = ["Stocks", "Bonds", "Mutual Funds", "Cryptocurrency"];
 
 
 export const trendingToday = [
