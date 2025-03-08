@@ -1,13 +1,31 @@
 "use client";
-import { useState } from "react";
-import { FaGoogle, FaEthereum } from "react-icons/fa";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { FaEthereum } from "react-icons/fa";
 import { Button } from "@/component/Button";
 import Image from "next/image";
-import Link from "next/link";
+import { connectMetaMask } from "../../lib/utils";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [wallet, setWallet] = useState<string | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Jika sudah login, langsung redirect ke home
+    if (wallet) {
+      router.push("/");
+    }
+  }, [wallet, router]);
+
+  // Fungsi untuk login dengan MetaMask
+  const handleLogin = async () => {
+    const result = await connectMetaMask();
+    if (result) {
+      setWallet(result.account);
+      localStorage.setItem("wallet", result.account); // Simpan di localStorage agar persistent
+    }
+  };
 
   return (
     <section className="flex items-center justify-center min-h-screen bg-gray-100 px-6">
@@ -28,13 +46,16 @@ export default function Login() {
           <span className="w-full border-t border-gray-300"></span>
         </div>
 
-        {/* Alternative Login */}
+        {/* Jika belum login, tampilkan tombol login */}
         <div className="flex flex-col space-y-3">
-          <Button className="w-full flex items-center justify-center text-gray-800 py-2 rounded-lg">
+          <Button
+            className="w-full flex items-center justify-center text-gray-800 py-2 rounded-lg"
+            onClick={handleLogin}
+          >
             <FaEthereum className="mr-2 text-xl" /> Login with Web3 Wallet
           </Button>
         </div>
       </div>
     </section>
   );
-};
+}

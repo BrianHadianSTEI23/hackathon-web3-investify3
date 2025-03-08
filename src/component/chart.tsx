@@ -56,6 +56,7 @@ export default function Charts() {
                         params
                     }
                 );
+                
                 console.log(response.data);
 
                 const timeSeriesKey = 
